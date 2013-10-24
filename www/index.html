@@ -3,6 +3,7 @@
     <head>
         <title>Zombie Apocalypse To-Do List</title>
         <link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<script type="text/javascript" src="phonegap.js"></script>
         <script type="text/javascript" language="JavaScript">
 		
 			function createNewToDo() {
@@ -58,16 +59,17 @@
 				var element3 = document.createElement("input");
 				element3.type = "button";
 				element3.id = rowID;
-				element3.value = "View";
+				element3.value = "";
 				element3.setAttribute("onclick", "viewSelectedRow(document.getElementById('text' + this.id))");
 				element3.className = "viewButton";
 				cell3.appendChild(element3);
 			 
 				// create the delete button
 				var cell4 = row.insertCell(3);
-				var element4 = document.createElement("input");
+				var element4 = document.createElement("button");
 				element4.type = "button";
-				element4.value = "Delete";
+				element4.value = "";
+				element4.innerHTML = "<img src='img/button_delete.png'>"
 				element4.setAttribute("onclick", "deleteSelectedRow(this)");
 				element4.className = "deleteButton";
 				cell4.appendChild(element4);
@@ -250,6 +252,27 @@
 				// save the to-do list
 				saveToDoList();
 			}
+			
+			function onSuccess(acceleration) {
+				alert('Acceleration X: ' + acceleration.x + '\n' +
+					  'Acceleration Y: ' + acceleration.y + '\n' +
+					  'Acceleration Z: ' + acceleration.z + '\n' +
+					  'Timestamp: '      + acceleration.timestamp + '\n');
+			};
+
+			function onError() {
+				alert('onError!');
+			};
+
+			// Wait for device API libraries to load
+			//
+			document.addEventListener("deviceready", onDeviceReady, false);
+
+			// device APIs are available
+			//
+			function onDeviceReady() {
+				navigator.accelerometer.getCurrentAcceleration(onSuccess, onError);
+			}
         </script>
     </head>
     <body onload="loadToDoList()">
@@ -260,6 +283,8 @@
 		<table id="dataTable" width="100%" border="1">
 		 
 		</table>
+		
+		<div class="accel"></div>
 		
     </body>
 </html>

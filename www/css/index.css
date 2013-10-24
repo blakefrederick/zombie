@@ -38,9 +38,9 @@ width: 64px;
 height: 32px;
 }
  
-.deleteButton { 
+.deleteButton { /*
 background-color: Transparent;
-background-image: url('../img/button_delete.png');
+background-image: url('../img/button_delete.png'); */
 width: 64px;
 height: 32px;
 }

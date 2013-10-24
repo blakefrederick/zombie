@@ -2,7 +2,7 @@
 <widget id="com.blakefrederick.zombie" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>ZombieApocalypseToDoList</name>
     <description>
-        Hello World sample application that responds to the deviceready event.
+        A to-do list for the zombie apocalypse
     </description>
     <author email="support@phonegap.com" href="http://phonegap.com">
         PhoneGap Team
